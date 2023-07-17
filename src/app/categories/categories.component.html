@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 bg-secondary-theme p-5 shadow-effect">
+      <h3 class="text-center text-theme-primary">
+        {{ isEditForm ? "Edit" : "New" }} Categories
+      </h3>
+      <p class="text-center mb-5">You can add new categories from here !</p>
+
+      <form
+        style="display: flex; align-items: center"
+        class="form-inline text-center form-categories"
+        #categoryForm="ngForm"
+        (ngSubmit)="handleSubmitCategory(categoryForm)"
+      >
+        <div class="form-group col-md-10">
+          <input
+            name="category"
+            placeholder="Add new categories"
+            class="form-control shadow-effect"
+            #newCategory="ngModel"
+            [(ngModel)]="inputValueCategory"
+            required
+            [ngClass]="{
+              'is-invalid': newCategory.touched && newCategory.invalid
+            }"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="newCategory.touched && newCategory.invalid"
+          >
+            Category is required
+          </div>
+        </div>
+        <div class="col-md-2">
+          <button
+            [disabled]="categoryForm.invalid"
+            class="btn text-center btn-block btn-info btn-theme"
+          >
+            {{ isEditForm ? "Edit" : "Add" }} Category
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-5 mb-5">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div class="card shadow-effect">
+      <div class="card-body">
+        <table class="table row-border hover">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Category</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of categoriesData | async; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ data.category.category }}</td>
+              <td class="">
+                <button
+                  (click)="handleEditCategory(data.category.category, data.id)"
+                  class="btn btn-sm btn-warning"
+                >
+                  Edit
+                </button>
+                <button
+                  (click)="handleDeleteCategory(data.id)"
+                  style="margin-left: 5px !important"
+                  class="btn btn-sm btn-danger ml-3"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3"></div>
+</div>

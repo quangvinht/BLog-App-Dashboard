@@ -1,0 +1,15 @@
+th {
+  word-wrap: break-word; /* Tự động xuống dòng nếu nội dung quá dài */
+}
+
+.btn-back-dashboard {
+  margin-left: 5px;
+}
+.btn-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.btn-action button {
+  margin: 0 2px;
+}
