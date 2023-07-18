@@ -32,6 +32,7 @@ import {
 import { LoginComponent } from './auth/login/login.component';
 import { AuthGuardService } from './services/auth.guard';
 import { SubsrcibersComponent } from './subsrcibers/subsrcibers.component';
+import { CommentsComponent } from './comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { SubsrcibersComponent } from './subsrcibers/subsrcibers.component';
     NewPostComponent,
     LoginComponent,
     SubsrcibersComponent,
+    CommentsComponent,
   ],
   imports: [
     FormsModule,

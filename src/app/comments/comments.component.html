@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card shadow-effect bg-secondary-theme">
+        <div class="card-body text-center">
+          <h3 class="text-theme-center">All comments</h3>
+          <p>From here you can manage your comments.</p>
+
+          <button class="btn-back-dashboard btn btn-warning" routerLink="/">
+            Back to Dashboard
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card shadow-effect">
+        <div class="card-body">
+          <table class="table row-border hover">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Comment</th>
+
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let comment of commentData; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ comment?.name }}</td>
+
+                <td>{{ comment?.comment }}</td>
+
+                <td>
+                  <div class="btn-action">
+                    <button
+                      style=""
+                      (click)="handleDeleteComment(comment.id)"
+                      class="ml-2 btn btn-sm btn-danger"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
